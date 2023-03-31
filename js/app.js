@@ -17,5 +17,22 @@ $('[data-group').each(function() {
     $target.addClass(activeClass);
     $(this).addClass(activeClass);
   })
+})
 
+$('.menu-nav a[href^="#"]').click(function(e) {
+  e.preventDefault();
+  var id = $(this).attr('href'),
+      menuHeight = $('.menu').innerHeight(),
+      targetOffset = $(id).offset().top;
+
+  $('html, body').animate({ 
+    scrollTop: targetOffset - menuHeight,
+  }, 600)    
+})
+
+$('.logo').click(function(e){
+  e.preventDefault();
+  $('html, body').animate({
+    scrollTop: 0
+  }, 600)
 })
