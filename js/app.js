@@ -36,3 +36,26 @@ $('.logo').click(function(e){
     scrollTop: 0
   }, 600)
 })
+
+$('section').each(function(){
+  var height = $(this).height(),
+      offsetTop = $(this).offset().top,
+      menuHeight = $('.menu').innerHeight(),
+      id = $(this).attr('id'),
+      $itemMenu = $('a[href="#' + id + '"]');
+
+  $(window).scroll(function() {
+    var scrollTop = $(this).scrollTop();
+
+    if (offsetTop - menuHeight < scrollTop && offsetTop + height - menuHeight > scrollTop) {
+      $itemMenu.addClass('active')
+    } else {
+      $itemMenu.removeClass('active')
+    }
+  });    
+});
+
+$('.mobile-btn').click(function() {
+  $(this).toggleClass('active');
+  $('.mobile-menu').toggleClass('active')
+})
